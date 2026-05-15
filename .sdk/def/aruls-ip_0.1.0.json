@@ -1,0 +1,93 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Arul's IP API",
+    "description": "Get your IP Address using this API. This is a free public web service that returns the client's IP address in either text or JSON format.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Arul John",
+      "url": "https://aruljohn.com"
+    },
+    "license": {
+      "name": "Free to use",
+      "url": "https://aruljohn.com/api/"
+    }
+  },
+  "externalDocs": {
+    "description": "API Documentation",
+    "url": "https://aruljohn.com/api/"
+  },
+  "servers": [
+    {
+      "url": "https://api.aruljohn.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/ip": {
+      "get": {
+        "summary": "Get IP Address in text format",
+        "description": "Returns the client's IP address as plain text",
+        "operationId": "getIpText",
+        "tags": [
+          "IP Address"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with IP address in plain text",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "199.199.199.199"
+                },
+                "example": "199.199.199.199"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ip/json": {
+      "get": {
+        "summary": "Get IP Address in JSON format",
+        "description": "Returns the client's IP address as a JSON object",
+        "operationId": "getIpJson",
+        "tags": [
+          "IP Address"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with IP address in JSON format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ip": {
+                      "type": "string",
+                      "description": "The client's IP address",
+                      "example": "199.199.199.199"
+                    }
+                  },
+                  "required": [
+                    "ip"
+                  ]
+                },
+                "example": {
+                  "ip": "199.199.199.199"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "IP Address",
+      "description": "Operations related to retrieving client IP addresses"
+    }
+  ]
+}

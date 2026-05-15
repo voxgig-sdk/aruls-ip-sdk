@@ -1,0 +1,28 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Arul John"
+        url: "https://aruljohn.com"
+      }
+      description: "Get your IP Address using this API. This is a free public web service that returns the client's IP address in either text or JSON format."
+      license: {
+        name: "Free to use"
+        url: "https://aruljohn.com/api/"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.aruljohn.com"
+        }
+      ]
+      title: "Arul's IP API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

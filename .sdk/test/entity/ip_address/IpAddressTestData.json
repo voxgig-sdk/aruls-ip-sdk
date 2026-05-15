@@ -1,0 +1,22 @@
+{
+  "existing": {
+    "ip_address": {
+      "IP_ADDRESS00": {
+        "ip": "sa"
+      },
+      "IP_ADDRESS01": {
+        "ip": "s14"
+      },
+      "IP_ADDRESS02": {
+        "ip": "s1e"
+      }
+    }
+  },
+  "new": {
+    "ip_address": {
+      "ip_address_ref01": {
+        "ip": "s28"
+      }
+    }
+  }
+}

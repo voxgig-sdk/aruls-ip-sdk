@@ -1,0 +1,38 @@
+# Entity: ip_address
+
+main: kit: entity: ip_address: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "ip"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "ip_address"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/ip/json"
+          parts: [
+            "ip"
+            "json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
