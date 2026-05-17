@@ -5,14 +5,14 @@ The Golang SDK for the ArulsIp API. Provides an entity-oriented interface using 
 
 ## Install
 ```bash
-go get github.com/voxgig-sdk/aruls-ip-sdk
+go get github.com/voxgig-sdk/aruls-ip-sdk/go
 ```
 
 If the module is not yet published to a registry, use a `replace` directive
 in your `go.mod` to point to a local checkout:
 
 ```bash
-go mod edit -replace github.com/voxgig-sdk/aruls-ip-sdk=../path/to/github.com/voxgig-sdk/aruls-ip-sdk
+go mod edit -replace github.com/voxgig-sdk/aruls-ip-sdk/go=../path/to/github.com/voxgig-sdk/aruls-ip-sdk/go
 ```
 
 
@@ -30,8 +30,8 @@ import (
     "fmt"
     "os"
 
-    sdk "github.com/voxgig-sdk/aruls-ip-sdk"
-    "github.com/voxgig-sdk/aruls-ip-sdk/core"
+    sdk "github.com/voxgig-sdk/aruls-ip-sdk/go"
+    "github.com/voxgig-sdk/aruls-ip-sdk/go/core"
 )
 
 func main() {
@@ -335,7 +335,7 @@ Use `core.ToMapAny()` to safely cast results and nested data.
 ### Package structure
 
 ```
-github.com/voxgig-sdk/aruls-ip-sdk/
+github.com/voxgig-sdk/aruls-ip-sdk/go/
 ├── aruls-ip.go        # Root package — type aliases and constructors
 ├── core/               # SDK core — client, types, pipeline
 ├── entity/             # Entity implementations
@@ -344,7 +344,7 @@ github.com/voxgig-sdk/aruls-ip-sdk/
 └── test/               # Test suites
 ```
 
-The root package (`github.com/voxgig-sdk/aruls-ip-sdk`) re-exports everything needed
+The root package (`github.com/voxgig-sdk/aruls-ip-sdk/go`) re-exports everything needed
 for normal use. Import sub-packages only when you need specific types
 like `core.ToMapAny`.
 

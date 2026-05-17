@@ -1,9 +1,15 @@
 {
   "existing": {
     "ipn": {
-      "IPN00": {},
-      "IPN01": {},
-      "IPN02": {}
+      "IPN00": {
+        "id": "IPN00"
+      },
+      "IPN01": {
+        "id": "IPN01"
+      },
+      "IPN02": {
+        "id": "IPN02"
+      }
     }
   },
   "new": {

@@ -1,10 +1,10 @@
 package voxgigarulsipsdk
 
 import (
-	"github.com/voxgig-sdk/aruls-ip-sdk/core"
-	"github.com/voxgig-sdk/aruls-ip-sdk/entity"
-	"github.com/voxgig-sdk/aruls-ip-sdk/feature"
-	_ "github.com/voxgig-sdk/aruls-ip-sdk/utility"
+	"github.com/voxgig-sdk/aruls-ip-sdk/go/core"
+	"github.com/voxgig-sdk/aruls-ip-sdk/go/entity"
+	"github.com/voxgig-sdk/aruls-ip-sdk/go/feature"
+	_ "github.com/voxgig-sdk/aruls-ip-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

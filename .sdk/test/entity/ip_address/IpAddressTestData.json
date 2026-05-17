@@ -2,13 +2,16 @@
   "existing": {
     "ip_address": {
       "IP_ADDRESS00": {
-        "ip": "sa"
+        "ip": "sa",
+        "id": "IP_ADDRESS00"
       },
       "IP_ADDRESS01": {
-        "ip": "s14"
+        "ip": "s14",
+        "id": "IP_ADDRESS01"
       },
       "IP_ADDRESS02": {
-        "ip": "s1e"
+        "ip": "s1e",
+        "id": "IP_ADDRESS02"
       }
     }
   },

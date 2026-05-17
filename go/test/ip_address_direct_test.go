@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/aruls-ip-sdk"
-	"github.com/voxgig-sdk/aruls-ip-sdk/core"
+	sdk "github.com/voxgig-sdk/aruls-ip-sdk/go"
+	"github.com/voxgig-sdk/aruls-ip-sdk/go/core"
 )
 
 func TestIpAddressDirect(t *testing.T) {

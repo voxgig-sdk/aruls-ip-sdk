@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/aruls-ip-sdk"
-	"github.com/voxgig-sdk/aruls-ip-sdk/core"
+	sdk "github.com/voxgig-sdk/aruls-ip-sdk/go"
+	"github.com/voxgig-sdk/aruls-ip-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/aruls-ip-sdk/go/utility/struct"
 )
 
 func TestIpAddressEntity(t *testing.T) {

@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/aruls-ip-sdk/core"
+	"github.com/voxgig-sdk/aruls-ip-sdk/go/core"
 )
 
 type BaseFeature struct {
