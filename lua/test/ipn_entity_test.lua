@@ -91,7 +91,6 @@ function ipn_basic_setup(extra)
     ["ARULSIP_TEST_IPN_ENTID"] = idmap,
     ["ARULSIP_TEST_LIVE"] = "FALSE",
     ["ARULSIP_TEST_EXPLAIN"] = "FALSE",
-    ["ARULSIP_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ function ipn_basic_setup(extra)
   if env["ARULSIP_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["ARULSIP_APIKEY"],
       },
       extra or {},
     })

@@ -99,14 +99,12 @@ func ip_addressDirectSetup(mockres any) *ip_addressDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ARULSIP_TEST_IP_ADDRESS_ENTID": map[string]any{},
 		"ARULSIP_TEST_LIVE":    "FALSE",
-		"ARULSIP_APIKEY":       "NONE",
 	})
 
 	live := env["ARULSIP_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ARULSIP_APIKEY"],
 		}
 		client := sdk.NewArulsIpSDK(mergedOpts)
 

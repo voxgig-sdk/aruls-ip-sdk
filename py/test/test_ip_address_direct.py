@@ -59,14 +59,12 @@ def _ip_address_direct_setup(mockres):
     env = runner.env_override({
         "ARULSIP_TEST_IP_ADDRESS_ENTID": {},
         "ARULSIP_TEST_LIVE": "FALSE",
-        "ARULSIP_APIKEY": "NONE",
     })
 
     live = env.get("ARULSIP_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("ARULSIP_APIKEY"),
         }
         client = ArulsIpSDK(merged_opts)
         return {

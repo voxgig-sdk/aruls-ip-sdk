@@ -20,9 +20,6 @@ class ArulsIpConfig
             ],
             "options" => [
                 "base" => "https://api.aruljohn.com",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

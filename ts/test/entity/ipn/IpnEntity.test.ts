@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'ARULS_IP_TEST_IPN_ENTID': idmap,
     'ARULS_IP_TEST_LIVE': 'FALSE',
     'ARULS_IP_TEST_EXPLAIN': 'FALSE',
-    'ARULS_IP_APIKEY': 'NONE',
   })
 
   idmap = env['ARULS_IP_TEST_IPN_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ArulsIpSDK(merge([
       {
-        apikey: env.ARULS_IP_APIKEY,
       },
       extra
     ]))
