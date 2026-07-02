@@ -14,6 +14,9 @@ local function make_config()
     },
     options = {
       base = "https://api.aruljohn.com",
+      auth = {
+        prefix = "Bearer",
+      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -26,36 +29,36 @@ local function make_config()
       ["ip_address"] = {
         ["fields"] = {
           {
+            ["active"] = true,
             ["name"] = "ip",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 0,
           },
         },
         ["name"] = "ip_address",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
+                ["args"] = {},
                 ["method"] = "GET",
                 ["orig"] = "/ip/json",
                 ["parts"] = {
                   "ip",
                   "json",
                 },
+                ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
-                ["args"] = {},
-                ["select"] = {},
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },
@@ -68,25 +71,25 @@ local function make_config()
         ["name"] = "ipn",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
+                ["args"] = {},
                 ["method"] = "GET",
                 ["orig"] = "/ip",
                 ["parts"] = {
                   "ip",
                 },
+                ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
-                ["args"] = {},
-                ["select"] = {},
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },

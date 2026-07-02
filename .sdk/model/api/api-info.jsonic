@@ -21,27 +21,7 @@ main: {
       ]
       title: "Arul's IP API"
       version: "1.0.0"
-      tagline: "Look up the caller's public IP address as plain text or JSON, with no signup or API key"
-      homepage: "https://aruljohn.com/api/"
-      docs_url: "https://aruljohn.com/api/"
-      license_short: "Free to use; please be reasonable with request volume"
-      license_md: `- Free public web service, no authentication or API key required
-- Provider asks callers to be reasonable with curl, jQuery, Postman, Ajax or other API call volume
-- No formal SLA or published rate limit; the operator has previously retired other APIs due to abuse
-- CORS is enabled, so the API can be called directly from browser JavaScript`
-      about_md: `Arul's IP API is a small public web service run by [Arul John](https://aruljohn.com/) that echoes back the caller's public IP address. It is hosted at \`api.aruljohn.com\` and documented alongside the operator's other public utilities at [aruljohn.com/api](https://aruljohn.com/api/).
-
-What you get from the API:
-
-- \`GET /ip\` returns the client IP as plain text (for example \`199.199.199.199\`)
-- \`GET /ip/json\` returns the same value wrapped in JSON, e.g. \`{"ip":"199.199.199.199"}\`
-
-No authentication, API key, or sign-up is required. CORS is enabled so the endpoints are usable directly from browser JavaScript. There is no published rate limit, but the operator asks callers to be reasonable with request volume.`
-      entity_desc: {
-        ip_address: "The caller's public IP address as plain text, returned by `GET /ip`."
-        ipn: "The caller's public IP address wrapped in a JSON object, returned by `GET /ip/json`."
-      }
-      auth: false
     }
   }
 }
+

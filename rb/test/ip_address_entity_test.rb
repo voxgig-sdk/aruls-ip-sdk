@@ -82,6 +82,7 @@ def ip_address_basic_setup(extra)
     "ARULSIP_TEST_IP_ADDRESS_ENTID" => idmap,
     "ARULSIP_TEST_LIVE" => "FALSE",
     "ARULSIP_TEST_EXPLAIN" => "FALSE",
+    "ARULSIP_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -93,6 +94,7 @@ def ip_address_basic_setup(extra)
   if env["ARULSIP_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["ARULSIP_APIKEY"],
       },
       extra || {},
     ])

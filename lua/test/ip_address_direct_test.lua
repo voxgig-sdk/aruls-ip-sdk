@@ -62,12 +62,14 @@ function ip_address_direct_setup(mockres)
   local env = runner.env_override({
     ["ARULSIP_TEST_IP_ADDRESS_ENTID"] = {},
     ["ARULSIP_TEST_LIVE"] = "FALSE",
+    ["ARULSIP_APIKEY"] = "NONE",
   })
 
   local live = env["ARULSIP_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["ARULSIP_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

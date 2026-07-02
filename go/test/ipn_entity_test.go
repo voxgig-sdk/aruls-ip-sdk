@@ -117,6 +117,7 @@ func ipnBasicSetup(extra map[string]any) *entityTestSetup {
 		"ARULSIP_TEST_IPN_ENTID": idmap,
 		"ARULSIP_TEST_LIVE":      "FALSE",
 		"ARULSIP_TEST_EXPLAIN":   "FALSE",
+		"ARULSIP_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ARULSIP_TEST_IPN_ENTID"])
@@ -127,6 +128,7 @@ func ipnBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ARULSIP_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ARULSIP_APIKEY"],
 			},
 			extra,
 		})

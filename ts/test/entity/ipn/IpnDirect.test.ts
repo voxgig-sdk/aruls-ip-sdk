@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ARULSIP_TEST_IPN_ENTID': {},
     'ARULSIP_TEST_LIVE': 'FALSE',
+    'ARULSIP_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ARULSIP_TEST_LIVE
 
   if (live) {
     const client = new ArulsIpSDK({
+      apikey: env.ARULSIP_APIKEY,
     })
 
     let idmap: any = env['ARULSIP_TEST_IPN_ENTID']

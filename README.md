@@ -1,19 +1,8 @@
 # ArulsIp SDK
 
-Look up the caller's public IP address as plain text or JSON, with no signup or API key
+Arul's IP API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Arul's IP API
-
-Arul's IP API is a small public web service run by [Arul John](https://aruljohn.com/) that echoes back the caller's public IP address. It is hosted at `api.aruljohn.com` and documented alongside the operator's other public utilities at [aruljohn.com/api](https://aruljohn.com/api/).
-
-What you get from the API:
-
-- `GET /ip` returns the client IP as plain text (for example `199.199.199.199`)
-- `GET /ip/json` returns the same value wrapped in JSON, e.g. `{"ip":"199.199.199.199"}`
-
-No authentication, API key, or sign-up is required. CORS is enabled so the endpoints are usable directly from browser JavaScript. There is no published rate limit, but the operator asks callers to be reasonable with request volume.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install aruls-ip-sdk
 luarocks install aruls-ip-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ArulsIpSDK } from 'aruls-ip'
 
-const client = new ArulsIpSDK({})
+const client = new ArulsIpSDK({
+  apikey: process.env.ARULS-IP_APIKEY,
+})
 
+// Load ipaddress data
+const ipaddress = await client.IpAddress().load({})
+console.log(ipaddress.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **IpAddress** | The caller's public IP address as plain text, returned by `GET /ip`. | `/ip/json` |
-| **Ipn** | The caller's public IP address wrapped in a JSON object, returned by `GET /ip/json`. | `/ip` |
+| **IpAddress** |  | `/ip/json` |
+| **Ipn** |  | `/ip` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,15 +101,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from arulsip_sdk import ArulsIpSDK
 
-client = ArulsIpSDK({})
+client = ArulsIpSDK({
+    "apikey": os.environ.get("ARULS-IP_APIKEY"),
+})
 
 
 # Load a specific ipaddress
-ipaddress, err = client.IpAddress(None).load(
-    {"id": "example_id"}, None
-)
+ipaddress, err = client.IpAddress().load({"id": "example_id"})
+print(ipaddress)
 ```
 
 ### PHP
@@ -125,13 +120,14 @@ ipaddress, err = client.IpAddress(None).load(
 <?php
 require_once 'arulsip_sdk.php';
 
-$client = new ArulsIpSDK([]);
+$client = new ArulsIpSDK([
+    "apikey" => getenv("ARULS-IP_APIKEY"),
+]);
 
 
 // Load a specific ipaddress
-[$ipaddress, $err] = $client->IpAddress(null)->load(
-    ["id" => "example_id"], null
-);
+[$ipaddress, $err] = $client->IpAddress()->load(["id" => "example_id"]);
+print_r($ipaddress);
 ```
 
 ### Golang
@@ -139,8 +135,13 @@ $client = new ArulsIpSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/aruls-ip-sdk/go"
 
-client := sdk.NewArulsIpSDK(map[string]any{})
+client := sdk.NewArulsIpSDK(map[string]any{
+    "apikey": os.Getenv("ARULS-IP_APIKEY"),
+})
 
+// Load ipaddress data
+ipaddress, err := client.IpAddress(nil).Load(map[string]any{}, nil)
+fmt.Println(ipaddress)
 ```
 
 ### Ruby
@@ -148,13 +149,14 @@ client := sdk.NewArulsIpSDK(map[string]any{})
 ```ruby
 require_relative "ArulsIp_sdk"
 
-client = ArulsIpSDK.new({})
+client = ArulsIpSDK.new({
+  "apikey" => ENV["ARULS-IP_APIKEY"],
+})
 
 
 # Load a specific ipaddress
-ipaddress, err = client.IpAddress(nil).load(
-  { "id" => "example_id" }, nil
-)
+ipaddress, err = client.IpAddress().load({ "id" => "example_id" })
+puts ipaddress
 ```
 
 ### Lua
@@ -162,13 +164,14 @@ ipaddress, err = client.IpAddress(nil).load(
 ```lua
 local sdk = require("aruls-ip_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ARULS-IP_APIKEY"),
+})
 
 
 -- Load a specific ipaddress
-local ipaddress, err = client:IpAddress(nil):load(
-  { id = "example_id" }, nil
-)
+local ipaddress, err = client:IpAddress():load({ id = "example_id" })
+print(ipaddress)
 ```
 
 ## Unit testing in offline mode
@@ -187,25 +190,21 @@ const result = await client.IpAddress().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ArulsIpSDK.test(None, None)
-result, err = client.IpAddress(None).load(
-    {"id": "test01"}, None
-)
+client = ArulsIpSDK.test()
+result, err = client.IpAddress().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ArulsIpSDK::test(null, null);
-[$result, $err] = $client->IpAddress(null)->load(
-    ["id" => "test01"], null
-);
+$client = ArulsIpSDK::test();
+[$result, $err] = $client->IpAddress()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.IpAddress(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -214,19 +213,15 @@ result, err := client.IpAddress(nil).Load(
 ### Ruby
 
 ```ruby
-client = ArulsIpSDK.test(nil, nil)
-result, err = client.IpAddress(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ArulsIpSDK.test
+result, err = client.IpAddress().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:IpAddress(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:IpAddress():load({ id = "test01" })
 ```
 
 ## How it works
@@ -330,15 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Arul's IP API
-
-- Upstream: [https://aruljohn.com/api/](https://aruljohn.com/api/)
-
-- Free public web service, no authentication or API key required
-- Provider asks callers to be reasonable with curl, jQuery, Postman, Ajax or other API call volume
-- No formal SLA or published rate limit; the operator has previously retired other APIs due to abuse
-- CORS is enabled, so the API can be called directly from browser JavaScript
 
 ---
 

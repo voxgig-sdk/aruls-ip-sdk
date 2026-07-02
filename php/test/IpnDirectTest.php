@@ -67,12 +67,14 @@ function ipn_direct_setup($mockres)
     $env = Runner::env_override([
         "ARULSIP_TEST_IPN_ENTID" => [],
         "ARULSIP_TEST_LIVE" => "FALSE",
+        "ARULSIP_APIKEY" => "NONE",
     ]);
 
     $live = $env["ARULSIP_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["ARULSIP_APIKEY"],
         ];
         $client = new ArulsIpSDK($merged_opts);
         return [
