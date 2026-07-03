@@ -10,7 +10,7 @@ The Python SDK for the ArulsIp API — an entity-oriented client following Pytho
 
 ## Install
 ```bash
-pip install aruls-ip-sdk
+pip install voxgig-sdk-aruls-ip
 ```
 
 Or install from source:

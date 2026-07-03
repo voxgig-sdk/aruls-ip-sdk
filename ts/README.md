@@ -10,7 +10,7 @@ The TypeScript SDK for the ArulsIp API — a type-safe, entity-oriented client w
 
 ## Install
 ```bash
-npm install aruls-ip
+npm install @voxgig-sdk/aruls-ip
 ```
 ## Tutorial: your first API call
 

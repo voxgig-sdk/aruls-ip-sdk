@@ -10,7 +10,7 @@ The Lua SDK for the ArulsIp API — an entity-oriented client using Lua conventi
 
 ## Install
 ```bash
-luarocks install aruls-ip-sdk
+luarocks install voxgig-sdk-aruls-ip
 ```
 
 If the module is not yet published, add the source directory to

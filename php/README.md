@@ -10,7 +10,7 @@ The PHP SDK for the ArulsIp API — an entity-oriented client using PHP conventi
 
 ## Install
 ```bash
-composer require voxgig/aruls-ip-sdk
+composer require voxgig-sdk/aruls-ip
 ```
 
 

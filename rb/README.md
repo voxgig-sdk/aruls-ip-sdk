@@ -10,13 +10,13 @@ The Ruby SDK for the ArulsIp API — an entity-oriented client using idiomatic R
 
 ## Install
 ```bash
-gem install aruls-ip-sdk
+gem install voxgig-sdk-aruls-ip
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "aruls-ip-sdk"
+gem "voxgig-sdk-aruls-ip"
 ```
 
 Then run:
