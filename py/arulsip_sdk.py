@@ -144,16 +144,23 @@ class ArulsIpSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class ArulsIpSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class ArulsIpSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def ip_address(self):
+        """Idiomatic facade: client.ip_address.list() / client.ip_address.load({"id": ...})."""
+        from entity.ip_address_entity import IpAddressEntity
+        cached = getattr(self, "_ip_address", None)
+        if cached is None:
+            cached = IpAddressEntity(self, None)
+            self._ip_address = cached
+        return cached
 
     def IpAddress(self, data=None):
+        # Deprecated: use client.ip_address instead.
         from entity.ip_address_entity import IpAddressEntity
         return IpAddressEntity(self, data)
 
 
+    @property
+    def ipn(self):
+        """Idiomatic facade: client.ipn.list() / client.ipn.load({"id": ...})."""
+        from entity.ipn_entity import IpnEntity
+        cached = getattr(self, "_ipn", None)
+        if cached is None:
+            cached = IpnEntity(self, None)
+            self._ipn = cached
+        return cached
+
     def Ipn(self, data=None):
+        # Deprecated: use client.ipn instead.
         from entity.ipn_entity import IpnEntity
         return IpnEntity(self, data)
 

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  IpAddress,
+  IpAddressLoadMatch,
+} from '../ArulsIpTypes'
 
 // TODO: needs Entity superclass
-class IpAddressEntity extends ArulsIpEntityBase {
+class IpAddressEntity extends ArulsIpEntityBase<IpAddress> {
 
   constructor(client: ArulsIpSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class IpAddressEntity extends ArulsIpEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: IpAddressLoadMatch, ctrl?: Control): Promise<IpAddress> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class IpAddressEntity extends ArulsIpEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<IpAddress> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -49,8 +49,7 @@ class TestIpAddressEntity:
         # LOAD
         ip_address_ref01_ent = client.IpAddress(None)
         ip_address_ref01_match_dt0 = {}
-        ip_address_ref01_data_dt0_loaded, err = ip_address_ref01_ent.load(ip_address_ref01_match_dt0, None)
-        assert err is None
+        ip_address_ref01_data_dt0_loaded = ip_address_ref01_ent.load(ip_address_ref01_match_dt0, None)
         assert ip_address_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _ip_address_basic_setup(extra):
         "ARULSIP_TEST_IP_ADDRESS_ENTID": idmap,
         "ARULSIP_TEST_LIVE": "FALSE",
         "ARULSIP_TEST_EXPLAIN": "FALSE",
-        "ARULSIP_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _ip_address_basic_setup(extra):
     if env.get("ARULSIP_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARULSIP_APIKEY"),
             },
             extra or {},
         ])

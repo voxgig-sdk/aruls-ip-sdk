@@ -62,14 +62,12 @@ function ipn_direct_setup(mockres)
   local env = runner.env_override({
     ["ARULSIP_TEST_IPN_ENTID"] = {},
     ["ARULSIP_TEST_LIVE"] = "FALSE",
-    ["ARULSIP_APIKEY"] = "NONE",
   })
 
   local live = env["ARULSIP_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["ARULSIP_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

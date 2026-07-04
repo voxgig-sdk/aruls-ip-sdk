@@ -3,6 +3,8 @@
 import { IpAddressEntity } from './entity/IpAddressEntity'
 import { IpnEntity } from './entity/IpnEntity'
 
+export type * from './ArulsIpTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class ArulsIpSDK {
 
 
 
+  _ip_address?: IpAddressEntity
+
+  // Idiomatic facade: `client.ip_address.list()` / `client.ip_address.load({ id })`.
+  get ip_address(): IpAddressEntity {
+    return (this._ip_address ??= new IpAddressEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.ip_address` instead. */
   IpAddress(data?: any) {
     const self = this
     return new IpAddressEntity(self,data)
   }
 
 
+  _ipn?: IpnEntity
+
+  // Idiomatic facade: `client.ipn.list()` / `client.ipn.load({ id })`.
+  get ipn(): IpnEntity {
+    return (this._ipn ??= new IpnEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.ipn` instead. */
   Ipn(data?: any) {
     const self = this
     return new IpnEntity(self,data)

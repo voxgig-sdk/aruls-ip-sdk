@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `ArulsIpSDK.test()`.
 ## IpAddressEntity
 
 ```ts
-const ip_address = client.IpAddress()
+const ip_address = client.ip_address
 ```
 
 ### Fields
@@ -138,7 +137,7 @@ const ip_address = client.IpAddress()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.IpAddress().load({ id: 'ip_address_id' })
+const result = await client.ip_address.load({ id: 'ip_address_id' })
 ```
 
 ### Common Methods
@@ -172,7 +171,7 @@ Return a copy of the entity options.
 ## IpnEntity
 
 ```ts
-const ipn = client.Ipn()
+const ipn = client.ipn
 ```
 
 ### Operations
@@ -182,7 +181,7 @@ const ipn = client.Ipn()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Ipn().load({ id: 'ipn_id' })
+const result = await client.ipn.load({ id: 'ipn_id' })
 ```
 
 ### Common Methods

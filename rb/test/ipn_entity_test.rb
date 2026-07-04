@@ -42,8 +42,7 @@ class IpnEntityTest < Minitest::Test
     # LOAD
     ipn_ref01_ent = client.Ipn(nil)
     ipn_ref01_match_dt0 = {}
-    ipn_ref01_data_dt0_loaded, err = ipn_ref01_ent.load(ipn_ref01_match_dt0, nil)
-    assert_nil err
+    ipn_ref01_data_dt0_loaded = ipn_ref01_ent.load(ipn_ref01_match_dt0, nil)
     assert !ipn_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def ipn_basic_setup(extra)
     "ARULSIP_TEST_IPN_ENTID" => idmap,
     "ARULSIP_TEST_LIVE" => "FALSE",
     "ARULSIP_TEST_EXPLAIN" => "FALSE",
-    "ARULSIP_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def ipn_basic_setup(extra)
   if env["ARULSIP_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARULSIP_APIKEY"],
       },
       extra || {},
     ])

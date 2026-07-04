@@ -9,9 +9,12 @@ The TypeScript SDK for the ArulsIp API — a type-safe, entity-oriented client w
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/aruls-ip
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/aruls-ip-sdk/releases](https://github.com/voxgig-sdk/aruls-ip-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ArulsIpSDK } from 'aruls-ip'
+import { ArulsIpSDK } from '@voxgig-sdk/aruls-ip'
 
-const client = new ArulsIpSDK({
-  apikey: process.env.ARULS-IP_APIKEY,
-})
+const client = new ArulsIpSDK()
 ```
 
-### 3. Load a ipaddress
+### 3. Load an ipaddress
 
 ```ts
-const result = await client.IpAddress().load({ id: 'example_id' })
+const result = await client.ipaddress.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ArulsIpSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.ipaddress.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ArulsIpSDK({ apikey: '...' })
+const client = new ArulsIpSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.ipaddress
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new ArulsIpSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new ArulsIpSDK({
 Create a `.env.local` file at the project root:
 
 ```
-ARULS-IP_TEST_LIVE=TRUE
-ARULS-IP_APIKEY=<your-key>
+ARULS_IP_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new ArulsIpSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new ArulsIpSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -276,7 +273,7 @@ API path: `/ip`
 
 ### IpAddress
 
-Create an instance: `const ip_address = client.IpAddress()`
+Create an instance: `const ip_address = client.ip_address`
 
 #### Operations
 
@@ -293,13 +290,13 @@ Create an instance: `const ip_address = client.IpAddress()`
 #### Example: Load
 
 ```ts
-const ip_address = await client.IpAddress().load({ id: 'ip_address_id' })
+const ip_address = await client.ip_address.load({ id: 'ip_address_id' })
 ```
 
 
 ### Ipn
 
-Create an instance: `const ipn = client.Ipn()`
+Create an instance: `const ipn = client.ipn`
 
 #### Operations
 
@@ -310,7 +307,7 @@ Create an instance: `const ipn = client.Ipn()`
 #### Example: Load
 
 ```ts
-const ipn = await client.Ipn().load({ id: 'ipn_id' })
+const ipn = await client.ipn.load({ id: 'ipn_id' })
 ```
 
 
@@ -371,7 +368,7 @@ aruls-ip/
 Import the SDK from the package root:
 
 ```ts
-import { ArulsIpSDK } from 'aruls-ip'
+import { ArulsIpSDK } from '@voxgig-sdk/aruls-ip'
 ```
 
 ### Entity state
@@ -381,11 +378,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const ipaddress = client.ipaddress
+await ipaddress.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// ipaddress.data() now returns the loaded ipaddress data
+// ipaddress.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

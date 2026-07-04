@@ -245,11 +245,17 @@ func (sdk *ArulsIpSDK) Direct(fetchargs map[string]any) (map[string]any, error) 
 }
 
 
+// IpAddress returns a IpAddress entity bound to this client.
+// Idiomatic usage: client.IpAddress(nil).List(nil, nil) or
+// client.IpAddress(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArulsIpSDK) IpAddress(data map[string]any) ArulsIpEntity {
 	return NewIpAddressEntityFunc(sdk, data)
 }
 
 
+// Ipn returns a Ipn entity bound to this client.
+// Idiomatic usage: client.Ipn(nil).List(nil, nil) or
+// client.Ipn(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArulsIpSDK) Ipn(data map[string]any) ArulsIpEntity {
 	return NewIpnEntityFunc(sdk, data)
 }

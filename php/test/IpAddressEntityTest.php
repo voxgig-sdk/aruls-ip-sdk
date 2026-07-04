@@ -49,8 +49,7 @@ class IpAddressEntityTest extends TestCase
         // LOAD
         $ip_address_ref01_ent = $client->IpAddress(null);
         $ip_address_ref01_match_dt0 = [];
-        [$ip_address_ref01_data_dt0_loaded, $err] = $ip_address_ref01_ent->load($ip_address_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $ip_address_ref01_data_dt0_loaded = $ip_address_ref01_ent->load($ip_address_ref01_match_dt0, null);
         $this->assertNotNull($ip_address_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function ip_address_basic_setup($extra)
         "ARULSIP_TEST_IP_ADDRESS_ENTID" => $idmap,
         "ARULSIP_TEST_LIVE" => "FALSE",
         "ARULSIP_TEST_EXPLAIN" => "FALSE",
-        "ARULSIP_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function ip_address_basic_setup($extra)
     if ($env["ARULSIP_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARULSIP_APIKEY"],
             ],
             $extra ?? [],
         ]);

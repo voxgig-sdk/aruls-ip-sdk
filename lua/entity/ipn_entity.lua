@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch IpnLoadMatch
+---@param ctrl? table
+---@return Ipn
+---@return string? err
 function IpnEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

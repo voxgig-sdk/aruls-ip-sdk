@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:ip_address():list() / client:ip_address():load({ id = ... })
+function ArulsIpSDK:ip_address(data)
+  local EntityMod = require("entity.ip_address_entity")
+  if data == nil then
+    if self._ip_address == nil then
+      self._ip_address = EntityMod.new(self, nil)
+    end
+    return self._ip_address
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:ip_address() instead.
 function ArulsIpSDK:IpAddress(data)
   local EntityMod = require("entity.ip_address_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:ipn():list() / client:ipn():load({ id = ... })
+function ArulsIpSDK:ipn(data)
+  local EntityMod = require("entity.ipn_entity")
+  if data == nil then
+    if self._ipn == nil then
+      self._ipn = EntityMod.new(self, nil)
+    end
+    return self._ipn
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:ipn() instead.
 function ArulsIpSDK:Ipn(data)
   local EntityMod = require("entity.ipn_entity")
   return EntityMod.new(self, data)
