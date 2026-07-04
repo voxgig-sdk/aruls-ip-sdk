@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load an ipaddress
 
 ```lua
-local result, err = client:ipaddress():load({ id = "example_id" })
+local ipaddress, err = client:IpAddress():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(ipaddress)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:ipaddress():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:IpAddress():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -161,8 +161,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `IpAddress` | `(data) -> IpAddressEntity` | Create a IpAddress entity instance. |
-| `Ipn` | `(data) -> IpnEntity` | Create a Ipn entity instance. |
+| `IpAddress` | `(data) -> IpAddressEntity` | Create an IpAddress entity instance. |
+| `Ipn` | `(data) -> IpnEntity` | Create an Ipn entity instance. |
 
 ### Entity interface
 
@@ -184,17 +184,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local ip_address, err = client:IpAddress():load({ id = "example_id" })
+    if err then error(err) end
+    -- ip_address is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -224,7 +229,7 @@ API path: `/ip`
 
 ### IpAddress
 
-Create an instance: `const ip_address = client.ip_address`
+Create an instance: `local ip_address = client:IpAddress(nil)`
 
 #### Operations
 
@@ -240,14 +245,14 @@ Create an instance: `const ip_address = client.ip_address`
 
 #### Example: Load
 
-```ts
-const ip_address = await client.ip_address.load({ id: 'ip_address_id' })
+```lua
+local ip_address, err = client:IpAddress():load({ id = "ip_address_id" })
 ```
 
 
 ### Ipn
 
-Create an instance: `const ipn = client.ipn`
+Create an instance: `local ipn = client:Ipn(nil)`
 
 #### Operations
 
@@ -257,8 +262,8 @@ Create an instance: `const ipn = client.ipn`
 
 #### Example: Load
 
-```ts
-const ipn = await client.ipn.load({ id: 'ipn_id' })
+```lua
+local ipn, err = client:Ipn():load({ id = "ipn_id" })
 ```
 
 
@@ -333,7 +338,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local ipaddress = client:ipaddress()
+local ipaddress = client:IpAddress()
 ipaddress:load({ id = "example_id" })
 
 -- ipaddress:data_get() now returns the loaded ipaddress data

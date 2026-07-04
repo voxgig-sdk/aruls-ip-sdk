@@ -26,9 +26,9 @@ import { ArulsIpSDK } from '@voxgig-sdk/aruls-ip'
 
 const client = new ArulsIpSDK()
 
-// Load ipaddress data
-const ipaddress = await client.ipaddress.load({})
-console.log(ipaddress.data)
+// Load ipaddress data (returns a IpAddress)
+const ipaddress = await client.IpAddress().load()
+console.log(ipaddress)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,8 +85,8 @@ from arulsip_sdk import ArulsIpSDK
 client = ArulsIpSDK()
 
 
-# Load a specific ipaddress
-ipaddress = client.ipaddress.load({"id": "example_id"})
+# Load a specific ipaddress (returns the record, raises on error)
+ipaddress = client.IpAddress().load({"id": "example_id"})
 print(ipaddress)
 ```
 
@@ -99,8 +99,8 @@ require_once 'arulsip_sdk.php';
 $client = new ArulsIpSDK();
 
 
-// Load a specific ipaddress
-$ipaddress = $client->ipaddress()->load(["id" => "example_id"]);
+// Load a specific ipaddress (returns the bare record; throws on error)
+$ipaddress = $client->IpAddress()->load(["id" => "example_id"]);
 print_r($ipaddress);
 ```
 
@@ -124,8 +124,8 @@ require_relative "ArulsIp_sdk"
 client = ArulsIpSDK.new
 
 
-# Load a specific ipaddress
-ipaddress = client.ipaddress.load({ "id" => "example_id" })
+# Load a specific ipaddress (returns the bare record; raises on error)
+ipaddress = client.IpAddress.load({ "id" => "example_id" })
 puts ipaddress
 ```
 
@@ -138,7 +138,7 @@ local client = sdk.new()
 
 
 -- Load a specific ipaddress
-local ipaddress, err = client:ipaddress():load({ id = "example_id" })
+local ipaddress, err = client:IpAddress():load({ id = "example_id" })
 print(ipaddress)
 ```
 
@@ -151,22 +151,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ArulsIpSDK.test()
-const result = await client.ipaddress.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const ipaddress = await client.IpAddress().load({ id: 'test01' })
+// ipaddress is a bare IpAddress populated with mock data
+console.log(ipaddress)
 ```
 
 ### Python
 
 ```python
 client = ArulsIpSDK.test()
-result = client.ipaddress.load({"id": "test01"})
+ipaddress = client.IpAddress().load({"id": "test01"})
+print(ipaddress)
 ```
 
 ### PHP
 
 ```php
-$client = ArulsIpSDK::test();
-$result = $client->ipaddress()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ArulsIpSDK::test([
+    "entity" => ["ipaddress" => ["test01" => ["id" => "test01"]]],
+]);
+$ipaddress = $client->IpAddress()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -181,15 +186,18 @@ result, err := client.IpAddress(nil).Load(
 ### Ruby
 
 ```ruby
-client = ArulsIpSDK.test
-result = client.ipaddress.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ArulsIpSDK.test({
+  "entity" => { "ipaddress" => { "test01" => { "id" => "test01" } } },
+})
+ipaddress = client.IpAddress.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:ipaddress():load({ id = "test01" })
+local result, err = client:IpAddress():load({ id = "test01" })
 ```
 
 ## How it works
@@ -237,6 +245,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

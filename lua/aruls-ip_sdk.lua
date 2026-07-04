@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:ip_address():list() / client:ip_address():load({ id = ... })
-function ArulsIpSDK:ip_address(data)
+-- Idiomatic facade: client:IpAddress():list() / client:IpAddress():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArulsIpSDK:IpAddress(data)
   local EntityMod = require("entity.ip_address_entity")
   if data == nil then
     if self._ip_address == nil then
@@ -256,15 +257,10 @@ function ArulsIpSDK:ip_address(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:ip_address() instead.
-function ArulsIpSDK:IpAddress(data)
-  local EntityMod = require("entity.ip_address_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:ipn():list() / client:ipn():load({ id = ... })
-function ArulsIpSDK:ipn(data)
+-- Idiomatic facade: client:Ipn():list() / client:Ipn():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArulsIpSDK:Ipn(data)
   local EntityMod = require("entity.ipn_entity")
   if data == nil then
     if self._ipn == nil then
@@ -272,12 +268,6 @@ function ArulsIpSDK:ipn(data)
     end
     return self._ipn
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:ipn() instead.
-function ArulsIpSDK:Ipn(data)
-  local EntityMod = require("entity.ipn_entity")
   return EntityMod.new(self, data)
 end
 

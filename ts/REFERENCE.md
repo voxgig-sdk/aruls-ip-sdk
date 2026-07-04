@@ -121,7 +121,7 @@ Alias for `ArulsIpSDK.test()`.
 ## IpAddressEntity
 
 ```ts
-const ip_address = client.ip_address
+const ip_address = client.IpAddress()
 ```
 
 ### Fields
@@ -137,7 +137,7 @@ const ip_address = client.ip_address
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ip_address.load({ id: 'ip_address_id' })
+const result = await client.IpAddress().load({ id: 'ip_address_id' })
 ```
 
 ### Common Methods
@@ -171,7 +171,7 @@ Return a copy of the entity options.
 ## IpnEntity
 
 ```ts
-const ipn = client.ipn
+const ipn = client.Ipn()
 ```
 
 ### Operations
@@ -181,7 +181,7 @@ const ipn = client.ipn
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ipn.load({ id: 'ipn_id' })
+const result = await client.Ipn().load({ id: 'ipn_id' })
 ```
 
 ### Common Methods

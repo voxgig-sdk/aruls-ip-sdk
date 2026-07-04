@@ -220,41 +220,21 @@ class ArulsIpSDK:
         }
 
 
-    @property
-    def ip_address(self):
-        """Idiomatic facade: client.ip_address.list() / client.ip_address.load({"id": ...})."""
-        from entity.ip_address_entity import IpAddressEntity
-        cached = getattr(self, "_ip_address", None)
-        if cached is None:
-            cached = IpAddressEntity(self, None)
-            self._ip_address = cached
-        return cached
-
-    def IpAddress(self, data=None):
-        # Deprecated: use client.ip_address instead.
+    def IpAddress(self, data=None) -> "IpAddressEntity":
+        """Entity factory: client.IpAddress().list({}) / client.IpAddress().load({"id": ...})."""
         from entity.ip_address_entity import IpAddressEntity
         return IpAddressEntity(self, data)
 
 
-    @property
-    def ipn(self):
-        """Idiomatic facade: client.ipn.list() / client.ipn.load({"id": ...})."""
-        from entity.ipn_entity import IpnEntity
-        cached = getattr(self, "_ipn", None)
-        if cached is None:
-            cached = IpnEntity(self, None)
-            self._ipn = cached
-        return cached
-
-    def Ipn(self, data=None):
-        # Deprecated: use client.ipn instead.
+    def Ipn(self, data=None) -> "IpnEntity":
+        """Entity factory: client.Ipn().list({}) / client.Ipn().load({"id": ...})."""
         from entity.ipn_entity import IpnEntity
         return IpnEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ArulsIpSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class ArulsIpSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.ip_address_entity import IpAddressEntity
+    from entity.ipn_entity import IpnEntity

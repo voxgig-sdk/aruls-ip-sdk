@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## IpAddressEntity
 
 ```php
-$ip_address = $client->ip_address();
+$ip_address = $client->IpAddress();
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ $ip_address = $client->ip_address();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ip_address()->load(["id" => "ip_address_id"]);
+$result = $client->IpAddress()->load(["id" => "ip_address_id"]);
 ```
 
 ### Common Methods
@@ -141,7 +141,7 @@ Return the entity name.
 ## IpnEntity
 
 ```php
-$ipn = $client->ipn();
+$ipn = $client->Ipn();
 ```
 
 ### Operations
@@ -151,7 +151,7 @@ $ipn = $client->ipn();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ipn()->load(["id" => "ipn_id"]);
+$result = $client->Ipn()->load(["id" => "ipn_id"]);
 ```
 
 ### Common Methods

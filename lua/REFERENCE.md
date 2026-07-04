@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## IpAddressEntity
 
 ```lua
-local ip_address = client:ip_address(nil)
+local ip_address = client:IpAddress(nil)
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ local ip_address = client:ip_address(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ip_address():load({ id = "ip_address_id" })
+local result, err = client:IpAddress():load({ id = "ip_address_id" })
 ```
 
 ### Common Methods
@@ -139,7 +139,7 @@ Return the entity name.
 ## IpnEntity
 
 ```lua
-local ipn = client:ipn(nil)
+local ipn = client:Ipn(nil)
 ```
 
 ### Operations
@@ -149,7 +149,7 @@ local ipn = client:ipn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ipn():load({ id = "ipn_id" })
+local result, err = client:Ipn():load({ id = "ipn_id" })
 ```
 
 ### Common Methods

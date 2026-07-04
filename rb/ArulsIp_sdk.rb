@@ -208,26 +208,14 @@ class ArulsIpSDK
   end
 
 
-  # Idiomatic facade: client.ip_address.list / client.ip_address.load({ "id" => ... })
-  def ip_address
-    require_relative 'entity/ip_address_entity'
-    @ip_address ||= IpAddressEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.ip_address instead.
+  # Canonical facade: client.IpAddress.list / client.IpAddress.load({ "id" => ... })
   def IpAddress(data = nil)
     require_relative 'entity/ip_address_entity'
     IpAddressEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.ipn.list / client.ipn.load({ "id" => ... })
-  def ipn
-    require_relative 'entity/ipn_entity'
-    @ipn ||= IpnEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.ipn instead.
+  # Canonical facade: client.Ipn.list / client.Ipn.load({ "id" => ... })
   def Ipn(data = nil)
     require_relative 'entity/ipn_entity'
     IpnEntity.new(self, data)

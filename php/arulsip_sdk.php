@@ -233,10 +233,10 @@ class ArulsIpSDK
 
     private $_ip_address = null;
 
-    // Idiomatic facade: $client->ip_address()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias IpAddress() (PHP method
-    // names are case-insensitive).
-    public function ip_address($data = null)
+    // Canonical facade: $client->IpAddress()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->ip_address()
+    // resolves here too.
+    public function IpAddress($data = null)
     {
         require_once __DIR__ . '/entity/ip_address_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class ArulsIpSDK
 
     private $_ipn = null;
 
-    // Idiomatic facade: $client->ipn()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Ipn() (PHP method
-    // names are case-insensitive).
-    public function ipn($data = null)
+    // Canonical facade: $client->Ipn()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->ipn()
+    // resolves here too.
+    public function Ipn($data = null)
     {
         require_once __DIR__ . '/entity/ipn_entity.php';
         if ($data === null) {

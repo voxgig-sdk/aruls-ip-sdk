@@ -33,9 +33,10 @@ $client = new ArulsIpSDK();
 
 ```php
 try {
-    $result = $client->ipaddress()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare IpAddress record (throws on error).
+    $ipaddress = $client->IpAddress()->load(["id" => "example_id"]);
+    print_r($ipaddress);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ArulsIpSDK::test();
+$client = ArulsIpSDK::test([
+    "entity" => ["ipaddress" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->ipaddress()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$ipaddress = $client->IpAddress()->load(["id" => "test01"]);
+print_r($ipaddress);
 ```
 
 ### Use a custom fetch function
@@ -166,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `IpAddress` | `($data): IpAddressEntity` | Create a IpAddress entity instance. |
-| `Ipn` | `($data): IpnEntity` | Create a Ipn entity instance. |
+| `IpAddress` | `($data): IpAddressEntity` | Create an IpAddress entity instance. |
+| `Ipn` | `($data): IpnEntity` | Create an Ipn entity instance. |
 
 ### Entity interface
 
@@ -233,7 +238,7 @@ API path: `/ip`
 
 ### IpAddress
 
-Create an instance: `const ip_address = client.ip_address`
+Create an instance: `$ip_address = $client->IpAddress();`
 
 #### Operations
 
@@ -249,14 +254,15 @@ Create an instance: `const ip_address = client.ip_address`
 
 #### Example: Load
 
-```ts
-const ip_address = await client.ip_address.load({ id: 'ip_address_id' })
+```php
+// load() returns the bare IpAddress record (throws on error).
+$ip_address = $client->IpAddress()->load(["id" => "ip_address_id"]);
 ```
 
 
 ### Ipn
 
-Create an instance: `const ipn = client.ipn`
+Create an instance: `$ipn = $client->Ipn();`
 
 #### Operations
 
@@ -266,8 +272,9 @@ Create an instance: `const ipn = client.ipn`
 
 #### Example: Load
 
-```ts
-const ipn = await client.ipn.load({ id: 'ipn_id' })
+```php
+// load() returns the bare Ipn record (throws on error).
+$ipn = $client->Ipn()->load(["id" => "ipn_id"]);
 ```
 
 
@@ -342,7 +349,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$ipaddress = $client->ipaddress();
+$ipaddress = $client->IpAddress();
 $ipaddress->load(["id" => "example_id"]);
 
 // $ipaddress->dataGet() now returns the loaded ipaddress data
