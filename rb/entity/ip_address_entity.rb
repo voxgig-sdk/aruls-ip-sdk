@@ -67,10 +67,12 @@ class IpAddressEntity
   
   # Load a single IpAddress.
   #
-  # @param reqmatch [IpAddressLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [IpAddressLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.IpAddress.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [IpAddress, Hash] the loaded IpAddress; raises ArulsIpError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

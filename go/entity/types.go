@@ -13,8 +13,7 @@ type IpAddress struct {
 	Ip string `json:"ip"`
 }
 
-// IpAddressLoadMatch mirrors the ip_address fields as an all-optional match
-// filter (Go analog of Partial<IpAddress>).
+// IpAddressLoadMatch is the typed request payload for IpAddress.LoadTyped.
 type IpAddressLoadMatch struct {
 	Ip *string `json:"ip,omitempty"`
 }
@@ -23,8 +22,7 @@ type IpAddressLoadMatch struct {
 type Ipn struct {
 }
 
-// IpnLoadMatch mirrors the ipn fields as an all-optional match
-// filter (Go analog of Partial<Ipn>).
+// IpnLoadMatch is the typed request payload for Ipn.LoadTyped.
 type IpnLoadMatch struct {
 }
 

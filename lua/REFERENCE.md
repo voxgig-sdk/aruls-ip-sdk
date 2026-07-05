@@ -94,7 +94,7 @@ local ip_address = client:IpAddress(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ip` | ``$STRING`` | Yes |  |
+| `ip` | `string` | Yes |  |
 
 ### Operations
 
@@ -103,7 +103,7 @@ local ip_address = client:IpAddress(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:IpAddress():load({ id = "ip_address_id" })
+local result, err = client:IpAddress():load()
 ```
 
 ### Common Methods
@@ -149,7 +149,7 @@ local ipn = client:Ipn(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Ipn():load({ id = "ipn_id" })
+local result, err = client:Ipn():load()
 ```
 
 ### Common Methods

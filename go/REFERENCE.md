@@ -101,7 +101,7 @@ ip_address := client.IpAddress(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ip` | ``$STRING`` | Yes |  |
+| `ip` | `string` | Yes |  |
 
 ### Operations
 
@@ -110,7 +110,7 @@ ip_address := client.IpAddress(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.IpAddress(nil).Load(map[string]any{"id": "ip_address_id"}, nil)
+result, err := client.IpAddress(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -150,7 +150,7 @@ ipn := client.Ipn(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Ipn(nil).Load(map[string]any{"id": "ipn_id"}, nil)
+result, err := client.Ipn(nil).Load(nil, nil)
 ```
 
 ### Common Methods

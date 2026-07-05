@@ -221,13 +221,13 @@ class ArulsIpSDK:
 
 
     def IpAddress(self, data=None) -> "IpAddressEntity":
-        """Entity factory: client.IpAddress().list({}) / client.IpAddress().load({"id": ...})."""
+        """Entity factory: client.IpAddress().list() / client.IpAddress().load({"id": ...})."""
         from entity.ip_address_entity import IpAddressEntity
         return IpAddressEntity(self, data)
 
 
     def Ipn(self, data=None) -> "IpnEntity":
-        """Entity factory: client.Ipn().list({}) / client.Ipn().load({"id": ...})."""
+        """Entity factory: client.Ipn().list() / client.Ipn().load({"id": ...})."""
         from entity.ipn_entity import IpnEntity
         return IpnEntity(self, data)
 

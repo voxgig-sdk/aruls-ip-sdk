@@ -17,7 +17,7 @@ IpAddress = Struct.new(
   keyword_init: true
 )
 
-# Match filter for IpAddress#load (any subset of IpAddress fields).
+# Request payload for IpAddress#load.
 #
 # @!attribute [rw] ip
 #   @return [String, nil]
@@ -30,7 +30,7 @@ IpAddressLoadMatch = Struct.new(
 class Ipn
 end
 
-# Match filter for Ipn#load (any subset of Ipn fields).
+# Request payload for Ipn#load.
 class IpnLoadMatch
 end
 

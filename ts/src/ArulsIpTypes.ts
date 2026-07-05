@@ -9,10 +9,13 @@ export interface IpAddress {
   ip: string
 }
 
-export type IpAddressLoadMatch = Partial<IpAddress>
+export interface IpAddressLoadMatch {
+  ip?: string
+}
 
 export interface Ipn {
 }
 
-export type IpnLoadMatch = Partial<Ipn>
+export interface IpnLoadMatch {
+}
 

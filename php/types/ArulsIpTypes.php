@@ -18,7 +18,7 @@ class IpAddress
     public string $ip;
 }
 
-/** Match filter for IpAddress#load (any subset of IpAddress fields). */
+/** Request payload for IpAddress#load. */
 class IpAddressLoadMatch
 {
     public ?string $ip = null;
@@ -29,7 +29,7 @@ class Ipn
 {
 }
 
-/** Match filter for Ipn#load (any subset of Ipn fields). */
+/** Request payload for Ipn#load. */
 class IpnLoadMatch
 {
 }

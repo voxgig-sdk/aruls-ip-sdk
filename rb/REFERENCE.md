@@ -8,7 +8,7 @@ Complete API reference for the ArulsIp Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'aruls-ip_sdk'
+require_relative 'ArulsIp_sdk'
 
 client = ArulsIpSDK.new(options)
 ```
@@ -97,7 +97,7 @@ ip_address = client.IpAddress
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ip` | ``$STRING`` | Yes |  |
+| `ip` | `String` | Yes |  |
 
 ### Operations
 
@@ -106,7 +106,7 @@ ip_address = client.IpAddress
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.IpAddress.load({ "id" => "ip_address_id" })
+result = client.IpAddress.load()
 ```
 
 ### Common Methods
@@ -152,7 +152,7 @@ ipn = client.Ipn
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Ipn.load({ "id" => "ipn_id" })
+result = client.Ipn.load()
 ```
 
 ### Common Methods

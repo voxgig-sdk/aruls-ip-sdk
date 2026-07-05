@@ -128,7 +128,7 @@ const ip_address = client.IpAddress()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ip` | ``$STRING`` | Yes |  |
+| `ip` | `string` | Yes |  |
 
 ### Operations
 
@@ -137,7 +137,7 @@ const ip_address = client.IpAddress()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.IpAddress().load({ id: 'ip_address_id' })
+const result = await client.IpAddress().load()
 ```
 
 ### Common Methods
@@ -181,7 +181,7 @@ const ipn = client.Ipn()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Ipn().load({ id: 'ipn_id' })
+const result = await client.Ipn().load()
 ```
 
 ### Common Methods

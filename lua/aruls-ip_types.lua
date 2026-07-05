@@ -10,6 +10,7 @@
 ---@field ip string
 
 ---@class IpAddressLoadMatch
+---@field ip? string
 
 ---@class Ipn
 

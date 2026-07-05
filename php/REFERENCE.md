@@ -8,7 +8,7 @@ Complete API reference for the ArulsIp PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/aruls-ip_sdk.php';
+require_once __DIR__ . '/arulsip_sdk.php';
 
 $client = new ArulsIpSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `IpAddressEntity` instance. Pass `null` for no initial data.
 
 Create a new `IpnEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ArulsIpUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,7 +96,7 @@ $ip_address = $client->IpAddress();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ip` | ``$STRING`` | Yes |  |
+| `ip` | `string` | Yes |  |
 
 ### Operations
 
@@ -105,24 +105,24 @@ $ip_address = $client->IpAddress();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->IpAddress()->load(["id" => "ip_address_id"]);
+$result = $client->IpAddress()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -131,7 +131,7 @@ Set the entity match criteria.
 Create a new `IpAddressEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -151,24 +151,24 @@ $ipn = $client->Ipn();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Ipn()->load(["id" => "ipn_id"]);
+$result = $client->Ipn()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -177,7 +177,7 @@ Set the entity match criteria.
 Create a new `IpnEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

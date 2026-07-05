@@ -8,7 +8,7 @@ Complete API reference for the ArulsIp Python SDK.
 ### Constructor
 
 ```python
-from aruls-ip_sdk import ArulsIpSDK
+from arulsip_sdk import ArulsIpSDK
 
 client = ArulsIpSDK(options)
 ```
@@ -91,7 +91,7 @@ ip_address = client.IpAddress()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ip` | ``$STRING`` | Yes |  |
+| `ip` | `str` | Yes |  |
 
 ### Operations
 
@@ -100,7 +100,7 @@ ip_address = client.IpAddress()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.IpAddress().load({"id": "ip_address_id"})
+result = client.IpAddress().load()
 ```
 
 ### Common Methods
@@ -145,7 +145,7 @@ ipn = client.Ipn()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Ipn().load({"id": "ipn_id"})
+result = client.Ipn().load()
 ```
 
 ### Common Methods
