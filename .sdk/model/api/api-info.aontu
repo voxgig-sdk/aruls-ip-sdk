@@ -20,9 +20,9 @@ main: {
           url: "https://api.aruljohn.com"
         }
       ]
+      summary: "Get your IP Address using this API."
       title: "Arul's IP API"
       version: "1.0.0"
+      website: "https://aruljohn.com/api/"
     }
   }
-}
-

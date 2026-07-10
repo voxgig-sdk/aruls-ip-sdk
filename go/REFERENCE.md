@@ -94,7 +94,8 @@ same parameters as `Direct()`.
 ## IpAddressEntity
 
 ```go
-ip_address := client.IpAddress(nil)
+ipAddress := client.IpAddress(nil)
+fmt.Println(ipAddress.GetName()) // "ip_address"
 ```
 
 ### Fields
@@ -111,6 +112,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.IpAddress(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -141,6 +146,7 @@ Return the entity name.
 
 ```go
 ipn := client.Ipn(nil)
+fmt.Println(ipn.GetName()) // "ipn"
 ```
 
 ### Operations
@@ -151,6 +157,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Ipn(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

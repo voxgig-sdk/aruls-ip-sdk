@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single ipaddress — the value is the loaded record.
-    ipaddress, err := client.IpAddress(nil).Load(nil, nil)
+    // Load a single ipAddress — the value is the loaded record.
+    ipAddress, err := client.IpAddress(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(ipaddress)
+    fmt.Println(ipAddress)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-ipaddress, err := client.IpAddress(nil).Load(
+ipAddress, err := client.IpAddress(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(ipaddress) // the returned mock data
+fmt.Println(ipAddress) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -246,9 +246,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    ipaddress, err := client.IpAddress(nil).Load(nil, nil)
+    ipAddress, err := client.IpAddress(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // ipaddress is the returned record
+    // ipAddress is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -281,7 +281,7 @@ API path: `/ip`
 
 ### IpAddress
 
-Create an instance: `ip_address := client.IpAddress(nil)`
+Create an instance: `ipAddress := client.IpAddress(nil)`
 
 #### Operations
 
@@ -298,11 +298,11 @@ Create an instance: `ip_address := client.IpAddress(nil)`
 #### Example: Load
 
 ```go
-ip_address, err := client.IpAddress(nil).Load(nil, nil)
+ipAddress, err := client.IpAddress(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(ip_address) // the loaded record
+fmt.Println(ipAddress) // the loaded record
 ```
 
 

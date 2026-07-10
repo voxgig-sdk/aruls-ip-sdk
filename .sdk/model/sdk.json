@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -263,14 +260,17 @@
           "name": "Free to use",
           "url": "https://aruljohn.com/api/"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.aruljohn.com"
           }
         ],
+        "summary": "Get your IP Address using this API.",
         "title": "Arul's IP API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://aruljohn.com/api/"
       },
       "option": {},
       "target": {
@@ -323,6 +323,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -373,6 +376,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
