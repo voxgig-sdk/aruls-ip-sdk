@@ -12,20 +12,23 @@ at `../go`.
 # 1. Build a native binary (-> dist/<os>-<arch>/aruls-ip-cli)
 make build
 
-# 2. Provide credentials once, via the environment
+# 2. See usage (words, entities, env vars)
+./aruls-ip-cli --help
+
+# 3. Provide credentials once, via the environment
 export ARULS_IP_APIKEY=sk_live_xxx
 
-# 3. Each command line is ONE AQL expression, run against the API:
+# 4. Each command line is ONE AQL expression, run against the API:
 ./aruls-ip-cli load 1 ip_address            # {id:1} shorthand
 ./aruls-ip-cli load '{id:1}' ip_address       # explicit match map
 
-# 4. Override the API base URL for a single call
+# 5. Override the API base URL for a single call
 ARULS_IP_BASE=https://api.example.com ./aruls-ip-cli load 1 ip_address
 
-# 5. No arguments -> interactive REPL
+# 6. No arguments -> interactive REPL
 ./aruls-ip-cli
 aruls-ip> load 1 ip_address
-aruls-ip> :quit
+aruls-ip> /quit
 ```
 
 > The rest of this guide follows the [Diátaxis](https://diataxis.fr) framework:
@@ -54,7 +57,7 @@ aruls-ip> :quit
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
-   type `:help` for the word and entity lists and `:quit` to leave.
+   type `/help` for the word and entity lists and `/quit` to leave.
 
 That is the whole loop: *build → set key → evaluate AQL expressions*.
 
@@ -90,8 +93,8 @@ evaluated as its own AQL expression:
 ```text
 $ ./aruls-ip-cli
 aruls-ip> load 1 ip_address
-aruls-ip> :help
-aruls-ip> :quit
+aruls-ip> /help
+aruls-ip> /quit
 ```
 
 ### Cross-compile release binaries
@@ -103,7 +106,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 
 ### Discover the available entities
 
-`:help` in the REPL prints the full entity list, or see [Entities](#entities)
+`/help` in the REPL prints the full entity list, or see [Entities](#entities)
 below — this SDK exposes 2 entities.
 
 ## Reference
@@ -129,10 +132,16 @@ The CLI registers these AQL words, each bound to the SDK:
 
 Unset variables fall back to the SDK's built-in defaults.
 
+### CLI flags
+
+- `--help` / `-h` — print usage (words, entities, env vars) and exit.
+
 ### REPL commands
 
-- `:quit` / `:q` / `:exit` — exit the REPL
-- `:help` / `:h` / `:?`     — show the word list, entity list and meta commands
+Meta-commands use the `/` prefix (everything else on a line is evaluated as AQL):
+
+- `/quit` / `/q` / `/exit` — exit the REPL
+- `/help` / `/h` / `/?`     — show the word list, entity list and meta commands
 
 ### Exit codes
 
