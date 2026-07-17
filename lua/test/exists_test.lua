@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ArulsIp SDK exists test
 
 local sdk = require("aruls-ip_sdk")
 
