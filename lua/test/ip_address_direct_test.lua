@@ -60,11 +60,11 @@ function ip_address_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["ARULSIP_TEST_IP_ADDRESS_ENTID"] = {},
-    ["ARULSIP_TEST_LIVE"] = "FALSE",
+    ["ARULS_IP_TEST_IP_ADDRESS_ENTID"] = {},
+    ["ARULS_IP_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["ARULSIP_TEST_LIVE"] == "TRUE"
+  local live = env["ARULS_IP_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

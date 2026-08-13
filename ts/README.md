@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = ArulsIpSDK.test()
 
 const ipaddress = await client.IpAddress().load()
-// ipaddress is a bare entity populated with mock response data
+// ipaddress is the entity, populated with mock response data
+// — call ipaddress.data() for the record itself
 console.log(ipaddress)
 ```
 

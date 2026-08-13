@@ -16,11 +16,11 @@
 import pytest
 
 from arulsip_sdk import ArulsIpSDK
-from core.error import ArulsIpError
-from core.result import ArulsIpResult
-from core.response import ArulsIpResponse
-from core.spec import ArulsIpSpec
-from feature.base_feature import ArulsIpBaseFeature
+from arulsip_sdk.core.error import ArulsIpError
+from arulsip_sdk.core.result import ArulsIpResult
+from arulsip_sdk.core.response import ArulsIpResponse
+from arulsip_sdk.core.spec import ArulsIpSpec
+from arulsip_sdk.feature.base_feature import ArulsIpBaseFeature
 
 
 def _client():

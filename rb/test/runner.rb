@@ -23,8 +23,8 @@ module ArulsIpTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ARULSIP_TEST_LIVE")
-    override = getenv("ARULSIP_TEST_OVERRIDE")
+    live = getenv("ARULS_IP_TEST_LIVE")
+    override = getenv("ARULS_IP_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ArulsIpTestRunner
       end
     end
 
-    explain = getenv("ARULSIP_TEST_EXPLAIN")
-    m["ARULSIP_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ARULS_IP_TEST_EXPLAIN")
+    m["ARULS_IP_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ArulsIpControl
-from core.error import ArulsIpError
-from core.result import ArulsIpResult
-from core.spec import ArulsIpSpec
+from arulsip_sdk.config import make_config
+from arulsip_sdk.features import _make_feature
+from arulsip_sdk.core.control import ArulsIpControl
+from arulsip_sdk.core.error import ArulsIpError
+from arulsip_sdk.core.result import ArulsIpResult
+from arulsip_sdk.core.spec import ArulsIpSpec
 
 
 # True when this SDK was generated with the named feature.

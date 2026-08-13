@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ArulsIpUtility.registrar = ->(u) {
   u.prepare_params = ArulsIpUtilities::PrepareParams
   u.prepare_path = ArulsIpUtilities::PreparePath
   u.prepare_query = ArulsIpUtilities::PrepareQuery
+  u.graphql_body = ArulsIpUtilities::GraphqlBody
+  u.graphql_errors = ArulsIpUtilities::GraphqlErrors
   u.result_basic = ArulsIpUtilities::ResultBasic
   u.result_body = ArulsIpUtilities::ResultBody
   u.result_headers = ArulsIpUtilities::ResultHeaders

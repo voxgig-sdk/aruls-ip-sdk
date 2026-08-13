@@ -35,7 +35,7 @@ $client = new ArulsIpSDK();
 
 ```php
 try {
-    // load() returns the bare IpAddress record (throws on error).
+    // load() returns the ENTITY — call data_get() for the IpAddress record (throws on error).
     $ipaddress = $client->IpAddress()->load();
     print_r($ipaddress);
 } catch (\Throwable $err) {
@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = ArulsIpSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $ipaddress = $client->IpAddress()->load();
 print_r($ipaddress);
 ```
@@ -223,7 +224,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -284,7 +285,7 @@ Create an instance: `$ip_address = $client->IpAddress();`
 #### Example: Load
 
 ```php
-// load() returns the bare IpAddress record (throws on error).
+// load() returns the ENTITY — call data_get() for the IpAddress record (throws on error).
 $ip_address = $client->IpAddress()->load();
 ```
 
@@ -302,7 +303,7 @@ Create an instance: `$ipn = $client->Ipn();`
 #### Example: Load
 
 ```php
-// load() returns the bare Ipn record (throws on error).
+// load() returns the ENTITY — call data_get() for the Ipn record (throws on error).
 $ipn = $client->Ipn()->load();
 ```
 

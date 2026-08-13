@@ -34,7 +34,7 @@ client = ArulsIpSDK.new
 
 ```ruby
 begin
-  # load returns the bare IpAddress record (raises on error).
+  # load returns the ENTITY — call data_get for the IpAddress record (raises on error).
   ipaddress = client.IpAddress.load()
   puts ipaddress
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = ArulsIpSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 ipaddress = client.IpAddress.load()
 puts ipaddress
 ```
@@ -274,7 +275,7 @@ Create an instance: `ip_address = client.IpAddress`
 #### Example: Load
 
 ```ruby
-# load returns the bare IpAddress record (raises on error).
+# load returns the ENTITY — call data_get for the IpAddress record (raises on error).
 ip_address = client.IpAddress.load()
 ```
 
@@ -292,7 +293,7 @@ Create an instance: `ipn = client.Ipn`
 #### Example: Load
 
 ```ruby
-# load returns the bare Ipn record (raises on error).
+# load returns the ENTITY — call data_get for the Ipn record (raises on error).
 ipn = client.Ipn.load()
 ```
 

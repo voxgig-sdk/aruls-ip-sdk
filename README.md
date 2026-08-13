@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ArulsIpSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ArulsIpSDK.test({
+  entity: {
+    ip_address: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const ipaddress = await client.IpAddress().load()
-// ipaddress is a bare IpAddress populated with mock data
+// ipaddress is the IpAddress entity, populated with mock data
+// — call ipaddress.data() for the record itself
 console.log(ipaddress)
 ```
 
@@ -183,7 +192,7 @@ require_once 'arulsip_sdk.php';
 $client = new ArulsIpSDK();
 
 
-// Load a specific ipaddress (returns the bare record; throws on error)
+// Load a specific ipaddress (returns the ENTITY; call data_get() for the record; throws on error)
 $ipaddress = $client->IpAddress()->load();
 print_r($ipaddress);
 ```
@@ -211,7 +220,7 @@ require_relative "ArulsIp_sdk"
 client = ArulsIpSDK.new
 
 
-# Load a specific ipaddress (returns the bare record; raises on error)
+# Load a specific ipaddress (returns the ENTITY; call data_get for the record)
 ipaddress = client.IpAddress.load()
 puts ipaddress
 ```
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://aruljohn.com](https://aruljohn.com)
 

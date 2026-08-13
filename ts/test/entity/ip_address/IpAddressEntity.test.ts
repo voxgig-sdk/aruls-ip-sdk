@@ -26,8 +26,8 @@ import {
 describe('IpAddressEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ARULSIP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ARULSIP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ARULS_IP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ARULS_IP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ArulsIpSDK.test()
@@ -62,7 +62,7 @@ describe('IpAddressEntity', async () => {
     // LOAD
     const ip_address_ref01_ent = client.IpAddress()
     const ip_address_ref01_match_dt0: any = {}
-    const ip_address_ref01_data_dt0 = await ip_address_ref01_ent.load(ip_address_ref01_match_dt0)
+    const ip_address_ref01_data_dt0 = (await ip_address_ref01_ent.load(ip_address_ref01_match_dt0)).data()
     assert(null != ip_address_ref01_data_dt0)
 
 

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from arulsip_sdk.utility.voxgig_struct import voxgig_struct as vs
 from arulsip_sdk import ArulsIpSDK
-from core import helpers
+from arulsip_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _ip_address_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ARULSIP_TEST_IP_ADDRESS_ENTID": {},
-        "ARULSIP_TEST_LIVE": "FALSE",
+        "ARULS_IP_TEST_IP_ADDRESS_ENTID": {},
+        "ARULS_IP_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ARULSIP_TEST_LIVE") == "TRUE"
+    live = env.get("ARULS_IP_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

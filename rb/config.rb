@@ -43,6 +43,7 @@ module ArulsIpConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ip/json",
                   "parts" => [
@@ -75,6 +76,7 @@ module ArulsIpConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ip",
                   "parts" => [

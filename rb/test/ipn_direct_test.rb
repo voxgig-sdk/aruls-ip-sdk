@@ -59,11 +59,11 @@ def ipn_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "ARULSIP_TEST_IPN_ENTID" => {},
-    "ARULSIP_TEST_LIVE" => "FALSE",
+    "ARULS_IP_TEST_IPN_ENTID" => {},
+    "ARULS_IP_TEST_LIVE" => "FALSE",
   })
 
-  live = env["ARULSIP_TEST_LIVE"] == "TRUE"
+  live = env["ARULS_IP_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

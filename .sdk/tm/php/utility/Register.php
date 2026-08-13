@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ ArulsIpUtility::setRegistrar(function (ArulsIpUtility $u): void {
     $u->prepare_params = [ArulsIpPrepareParams::class, 'call'];
     $u->prepare_path = [ArulsIpPreparePath::class, 'call'];
     $u->prepare_query = [ArulsIpPrepareQuery::class, 'call'];
+    $u->graphql_body = [ArulsIpGraphql::class, 'body'];
+    $u->graphql_errors = [ArulsIpGraphql::class, 'errors'];
     $u->result_basic = [ArulsIpResultBasic::class, 'call'];
     $u->result_body = [ArulsIpResultBody::class, 'call'];
     $u->result_headers = [ArulsIpResultHeaders::class, 'call'];
