@@ -40,7 +40,7 @@ class ArulsIpSDK
         $utility = new ArulsIpUtility();
         $this->_utility = $utility;
 
-        $config = ArulsIpConfig::make_config();
+        $config = ArulsIpConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

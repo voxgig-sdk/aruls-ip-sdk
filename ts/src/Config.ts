@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://api.aruljohn.com',
+    base: "https://api.aruljohn.com",
 
     headers: {
       "content-type": "application/json"
@@ -58,11 +58,9 @@ class Config {
     "ip_address": {
       "fields": [
         {
-          "active": true,
           "name": "ip",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         }
       ],
       "name": "ip_address",
@@ -72,7 +70,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -85,11 +82,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -105,7 +100,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -117,11 +111,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

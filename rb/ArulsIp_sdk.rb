@@ -28,7 +28,7 @@ class ArulsIpSDK
     utility = ArulsIpUtility.new
     @_utility = utility
 
-    config = ArulsIpConfig.make_config
+    config = ArulsIpConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
