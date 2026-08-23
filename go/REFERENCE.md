@@ -102,7 +102,7 @@ fmt.Println(ipAddress.GetName()) // "ip_address"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ip` | `string` | Yes |  |
+| `ip` | `string` | Yes | The client's IP address |
 
 ### Operations
 

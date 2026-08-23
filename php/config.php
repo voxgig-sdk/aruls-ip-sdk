@@ -33,6 +33,9 @@ class ArulsIpConfig
         return [
             "main" => [
                 "name" => "ArulsIp",
+                "slug" => "aruls-ip",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -57,6 +60,7 @@ class ArulsIpConfig
             [
               'name' => 'ip',
               'req' => true,
+              'short' => 'The client\'s IP address',
               'type' => '`$STRING`',
             ],
           ],

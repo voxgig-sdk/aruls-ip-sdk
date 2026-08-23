@@ -91,7 +91,7 @@ ip_address = client.IpAddress()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ip` | `str` | Yes |  |
+| `ip` | `str` | Yes | The client's IP address |
 
 ### Operations
 

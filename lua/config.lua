@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "ArulsIp",
+      slug = "aruls-ip",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -31,6 +34,7 @@ local function make_config()
           {
             ["name"] = "ip",
             ["req"] = true,
+            ["short"] = "The client's IP address",
             ["type"] = "`$STRING`",
           },
         },

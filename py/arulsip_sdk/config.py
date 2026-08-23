@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "ArulsIp",
+            "slug": "aruls-ip",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -52,6 +55,7 @@ def make_config():
           {
             "name": "ip",
             "req": True,
+            "short": "The client's IP address",
             "type": "`$STRING`",
           },
         ],

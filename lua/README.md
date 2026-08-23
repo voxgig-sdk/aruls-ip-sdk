@@ -226,7 +226,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `ip` |  |
+| `ip` | The client's IP address |
 
 Operations: Load.
 
@@ -260,7 +260,7 @@ Create an instance: `local ip_address = client:IpAddress(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ip` | `string` |  |
+| `ip` | `string` | The client's IP address |
 
 #### Example: Load
 

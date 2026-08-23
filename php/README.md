@@ -246,7 +246,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `ip` |  |
+| `ip` | The client's IP address |
 
 Operations: Load.
 
@@ -280,7 +280,7 @@ Create an instance: `$ip_address = $client->IpAddress();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ip` | `string` |  |
+| `ip` | `string` | The client's IP address |
 
 #### Example: Load
 

@@ -236,7 +236,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `ip` |  |
+| `ip` | The client's IP address |
 
 Operations: Load.
 
@@ -270,7 +270,7 @@ Create an instance: `ip_address = client.IpAddress`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ip` | `String` |  |
+| `ip` | `String` | The client's IP address |
 
 #### Example: Load
 

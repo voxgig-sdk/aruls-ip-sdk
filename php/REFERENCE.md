@@ -96,7 +96,7 @@ $ip_address = $client->IpAddress();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ip` | `string` | Yes |  |
+| `ip` | `string` | Yes | The client's IP address |
 
 ### Operations
 

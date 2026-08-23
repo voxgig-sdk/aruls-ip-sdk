@@ -36,6 +36,7 @@
               "active": true,
               "name": "ip",
               "req": true,
+              "short": "The client's IP address",
               "type": "`$STRING`"
             }
           ],
