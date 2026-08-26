@@ -42,6 +42,7 @@ class ArulsIpConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
