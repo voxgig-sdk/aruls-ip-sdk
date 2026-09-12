@@ -12,8 +12,10 @@ main: kit: entity: ipn: {
         {
           method: "GET"
           orig: "/ip"
-          parts: [
-            "ip"
+          segments: [
+            {
+              lit: "ip"
+            }
           ]
           transform: {
             req: "`reqdata`"

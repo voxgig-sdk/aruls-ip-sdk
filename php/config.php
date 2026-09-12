@@ -76,14 +76,22 @@ class ArulsIpConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/ip/json',
-                  'parts' => [
-                    'ip',
-                    'json',
+                  'segments' => [
+                    [
+                      'lit' => 'ip',
+                    ],
+                    [
+                      'lit' => 'json',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'ip',
+                    'json',
                   ],
                 ],
               ],
@@ -106,13 +114,18 @@ class ArulsIpConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/ip',
-                  'parts' => [
-                    'ip',
+                  'segments' => [
+                    [
+                      'lit' => 'ip',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'ip',
                   ],
                 ],
               ],

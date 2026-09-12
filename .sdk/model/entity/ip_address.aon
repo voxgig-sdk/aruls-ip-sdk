@@ -21,9 +21,13 @@ main: kit: entity: ip_address: {
         {
           method: "GET"
           orig: "/ip/json"
-          parts: [
-            "ip"
-            "json"
+          segments: [
+            {
+              lit: "ip"
+            }
+            {
+              lit: "json"
+            }
           ]
           transform: {
             req: "`reqdata`"
