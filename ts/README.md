@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ArulsIpSDK } from '@voxgig-sdk/aruls-ip'
+import { ArulsIpSDK } from '@voxgig-sdk/aruls-ip-sdk'
 
 const client = new ArulsIpSDK()
 ```
@@ -428,7 +428,7 @@ aruls-ip/
 Import the SDK from the package root:
 
 ```ts
-import { ArulsIpSDK } from '@voxgig-sdk/aruls-ip'
+import { ArulsIpSDK } from '@voxgig-sdk/aruls-ip-sdk'
 ```
 
 ### Entity state

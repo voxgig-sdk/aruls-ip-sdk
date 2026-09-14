@@ -105,7 +105,7 @@ local result, err = client:IpAddress():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/aruls-ip` | publish pending — [install from git tag](https://github.com/voxgig-sdk/aruls-ip-sdk/releases) |
+| TypeScript | `@voxgig-sdk/aruls-ip-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/aruls-ip-sdk/releases) |
 | Python | `voxgig-sdk-aruls-ip` | publish pending — [install from git tag](https://github.com/voxgig-sdk/aruls-ip-sdk/releases) |
 | PHP | `voxgig-sdk/aruls-ip` | publish pending — [install from git tag](https://github.com/voxgig-sdk/aruls-ip-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/aruls-ip-sdk/go` | `go get github.com/voxgig-sdk/aruls-ip-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:IpAddress():load()
 ### TypeScript
 
 ```ts
-import { ArulsIpSDK } from '@voxgig-sdk/aruls-ip'
+import { ArulsIpSDK } from '@voxgig-sdk/aruls-ip-sdk'
 
 const client = new ArulsIpSDK()
 
